@@ -14,7 +14,6 @@ server.get("/api/artworks", async (req, res) => {
     );
     const data = await response.json();
     res.json(data);
-    console.log(data);
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "An error occurred while fetching data" });
@@ -28,7 +27,6 @@ server.get("/api/artworks/paintings", async (req, res) => {
     );
     const data = await response.json();
     res.json(data);
-    console.log(data);
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "An error occurred while fetching data" });
@@ -42,7 +40,6 @@ server.get("/api/artworks/photography", async (req, res) => {
     );
     const data = await response.json();
     res.json(data);
-    console.log(data);
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "An error occurred while fetching data" });
@@ -56,7 +53,6 @@ server.get("/api/artworks/sculptures", async (req, res) => {
     );
     const data = await response.json();
     res.json(data);
-    console.log(data);
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "An error occurred while fetching data" });
@@ -70,7 +66,20 @@ server.get("/api/artworks/statues", async (req, res) => {
     );
     const data = await response.json();
     res.json(data);
-    console.log(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "An error occurred while fetching data" });
+  }
+});
+
+server.get("/api/artworks/:id", async (req, res) => {
+  const ID = req.params.id;
+  try {
+    const response = await fetch(
+      `https://openaccess-api.clevelandart.org/api/artworks/${ID}`
+    );
+    const data = await response.json();
+    res.json(data);
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "An error occurred while fetching data" });
